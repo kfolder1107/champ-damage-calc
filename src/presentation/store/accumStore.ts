@@ -1,0 +1,38 @@
+import { create } from 'zustand'
+
+export interface AccumEntry {
+  id: string
+  label: string      // 例: "ガブリアス のじしん"
+  rolls: number[]    // 15段階ロール（Champions仕様、1回分）
+  /** 何回使用するか（1〜5）。累積ダメージ計算に使用 */
+  usages: number
+  minDmg: number     // 1回分の最小ダメージ
+  maxDmg: number     // 1回分の最大ダメージ
+  defenderMaxHp: number
+}
+
+interface AccumStore {
+  entries: AccumEntry[]
+  addEntry: (entry: Omit<AccumEntry, 'id'>) => void
+  removeEntry: (id: string) => void
+  setEntryUsages: (id: string, usages: number) => void
+  clearEntries: () => void
+}
+
+export const useAccumStore = create<AccumStore>(set => ({
+  entries: [],
+  addEntry: (entry) => set(s => ({
+    entries: [...s.entries, {
+      ...entry,
+      usages: entry.usages ?? 1,
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    }],
+  })),
+  removeEntry: (id) => set(s => ({ entries: s.entries.filter(e => e.id !== id) })),
+  setEntryUsages: (id, usages) => set(s => ({
+    entries: s.entries.map(e =>
+      e.id === id ? { ...e, usages: Math.max(1, Math.min(9, Math.floor(usages))) } : e
+    ),
+  })),
+  clearEntries: () => set({ entries: [] }),
+}))
