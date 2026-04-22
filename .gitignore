@@ -7,3 +7,11 @@ dist
 coverage
 .claude/*
 !.claude/settings.json
+
+# TypeScript / Vite コンパイル成果物（コミット不要）
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+vitest.config.js
+vitest.config.d.ts
+tailwind.config.d.ts
