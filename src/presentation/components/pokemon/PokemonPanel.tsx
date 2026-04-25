@@ -78,6 +78,17 @@ export function PokemonPanel({ store, label, showMoves = false }: PokemonPanelPr
 
       {store.pokemonId && (
         <>
+          {/* 技（攻撃側のみ・ポケモン選択直下） */}
+          {showMoves && (
+            <MoveSlots
+              moves={store.moves}
+              setMove={store.setMove}
+              movePowers={store.movePowers}
+              setMovePower={store.setMovePower}
+              maxHP={computedStats.hp}
+            />
+          )}
+
           {/* SP配分 + ランク補正 + 性格（統合） */}
           <SpDistributionPanel
             sp={store.sp}
@@ -88,6 +99,7 @@ export function PokemonPanel({ store, label, showMoves = false }: PokemonPanelPr
             onChangeRank={(stat: StatKey, rank: number) => store.setRank(stat, rank)}
             statNatures={store.statNatures}
             onChangeNature={(stat: StatKey, val: number) => store.setStatNature(stat, val)}
+            visibleStats={label === '攻撃側' ? ['atk', 'spa'] : ['hp', 'def', 'spd']}
           />
 
           {/* 特性 */}
@@ -226,16 +238,6 @@ export function PokemonPanel({ store, label, showMoves = false }: PokemonPanelPr
             </div>
           )}
 
-          {/* 技（攻撃側のみ） */}
-          {showMoves && (
-            <MoveSlots
-              moves={store.moves}
-              setMove={store.setMove}
-              movePowers={store.movePowers}
-              setMovePower={store.setMovePower}
-              maxHP={computedStats.hp}
-            />
-          )}
         </>
       )}
     </div>

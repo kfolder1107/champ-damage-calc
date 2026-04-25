@@ -8,7 +8,7 @@ import { SP_MAX_TOTAL } from '@/domain/constants/spLimits'
 import { getTotalSp } from '@/domain/models/StatPoints'
 import type { StatNatures } from '@/application/usecases/CalculateStatsUseCase'
 
-const SP_STAT_KEYS: StatKey[] = ['hp', 'atk', 'def', 'spa', 'spd', 'spe']
+const ALL_SP_STAT_KEYS: StatKey[] = ['hp', 'atk', 'def', 'spa', 'spd', 'spe']
 // HP にはランク補正・性格補正なし
 const NATURE_RANK_STATS = new Set<StatKey>(['atk', 'def', 'spa', 'spd', 'spe'])
 
@@ -21,12 +21,16 @@ interface SpDistributionProps {
   onChangeRank?: (stat: StatKey, rank: number) => void
   statNatures?: StatNatures
   onChangeNature?: (stat: StatKey, val: number) => void
+  /** 表示するステータスを絞り込む（省略時は全6ステータス） */
+  visibleStats?: StatKey[]
 }
 
-export function SpDistributionPanel({ sp, stats, onChangeSp, onSetPreset, ranks, onChangeRank, statNatures, onChangeNature }: SpDistributionProps) {
+export function SpDistributionPanel({ sp, stats, onChangeSp, onSetPreset, ranks, onChangeRank, statNatures, onChangeNature, visibleStats }: SpDistributionProps) {
   const total = getTotalSp(sp)
   const remaining = SP_MAX_TOTAL - total
   const isOver = remaining < 0
+
+  const displayKeys = visibleStats ?? ALL_SP_STAT_KEYS
 
   return (
     <div className="space-y-2">
@@ -56,7 +60,7 @@ export function SpDistributionPanel({ sp, stats, onChangeSp, onSetPreset, ranks,
 
       {/* スライダー + ランク補正 + 性格 */}
       <div className="space-y-1.5">
-        {SP_STAT_KEYS.map(stat => (
+        {displayKeys.map(stat => (
           <SpSlider
             key={stat}
             label={STAT_LABEL[stat]}

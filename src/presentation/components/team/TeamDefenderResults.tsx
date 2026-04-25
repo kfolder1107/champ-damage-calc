@@ -145,10 +145,17 @@ function MemberResultCard({
     if (!defBaseStats) return []
 
     return attacker.moves
-      .map(moveName => {
+      .map((moveName, slotIdx) => {
         if (!moveName) return null
-        const move = MoveRepository.findByName(moveName)
+        let move = MoveRepository.findByName(moveName)
         if (!move || move.category === '変化') return null
+
+        // 可変威力技（おはかまいり等）: 攻撃側で選択した威力を反映
+        const powerOverride = attacker.movePowers[slotIdx]
+        if (powerOverride !== null && move.powerOptions?.includes(powerOverride)) {
+          move = { ...move, power: powerOverride }
+        }
+
         try {
           const result = executeDamageCalculation({
             attacker: {
@@ -200,7 +207,7 @@ function MemberResultCard({
     member.pokemonId, member.natureName, member.abilityName,
     member.itemName, member.isMega, member.megaKey,
     attacker.pokemonId, attacker.sp, attacker.statNatures, attacker.effectiveAbility,
-    attacker.itemName, attacker.moves, attacker.ranks, attacker.status,
+    attacker.itemName, attacker.moves, attacker.movePowers, attacker.ranks, attacker.status,
     attacker.abilityActivated, attacker.supremeOverlordBoost,
     attacker.proteanType, attacker.proteanStab,
     field.weather, field.terrain,
