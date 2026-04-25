@@ -8893,6 +8893,27 @@
     "multiHit": null
   },
   {
+    "name": "フェイタルクロー",
+    "nameEn": "Fatal Claw",
+    "type": "どく",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": false
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
     "name": "フェイント",
     "nameEn": "Feint",
     "type": "ノーマル",
@@ -11814,8 +11835,14 @@
     },
     "special": null,
     "selfStatDrops": [
-      { "stat": "def", "stages": -1 },
-      { "stat": "spd", "stages": -1 }
+      {
+        "stat": "def",
+        "stages": -1
+      },
+      {
+        "stat": "spd",
+        "stages": -1
+      }
     ]
   },
   {
