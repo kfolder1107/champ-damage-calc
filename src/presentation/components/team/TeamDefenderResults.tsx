@@ -10,10 +10,12 @@ import { SP_MAX_STAT, SP_MAX_TOTAL } from '@/domain/constants/spLimits'
 import { useFieldStore } from '@/presentation/store/fieldStore'
 import { FieldStateBar } from '@/presentation/components/field/FieldStateBar'
 import { TypeBadge } from '@/presentation/components/shared/Badge'
+import { calcKoProbability } from '@/domain/calculators/KoProbabilityCalc'
+import { calcRollPercent } from '@/domain/models/DamageResult'
 import type { PokemonStore } from '@/presentation/store/pokemonStore'
 import type { Team, TeamMember } from '@/data/schemas/teamTypes'
 import type { TypeName, BaseStats, StatKey } from '@/domain/models/Pokemon'
-import type { KoResult } from '@/domain/models/DamageResult'
+import type { KoResult, DamageResult } from '@/domain/models/DamageResult'
 import type { NatureModifier } from '@/domain/constants/natureModifiers'
 import type { SpDistribution } from '@/domain/models/StatPoints'
 
@@ -157,7 +159,7 @@ function MemberResultCard({
         }
 
         try {
-          const result = executeDamageCalculation({
+          const rawResult = executeDamageCalculation({
             attacker: {
               baseStats: attacker.baseStats,
               types: attacker.types,
@@ -188,6 +190,25 @@ function MemberResultCard({
             field: battleField,
             isCritical: false,
           })
+
+          // おやこあい: 子の一撃（親ロールの25%）を合算する
+          let result = rawResult
+          if (attacker.effectiveAbility === 'おやこあい') {
+            const parentRolls = Array.from(rawResult.rolls)
+            const combinedRolls = parentRolls.map(r => r + Math.floor(r * 0.25)) as DamageResult['rolls']
+            const combinedMin = combinedRolls[0]
+            const combinedMax = combinedRolls[14]
+            result = {
+              ...rawResult,
+              rolls: combinedRolls,
+              min: combinedMin,
+              max: combinedMax,
+              percentMin: calcRollPercent(combinedMin, rawResult.defenderMaxHp),
+              percentMax: calcRollPercent(combinedMax, rawResult.defenderMaxHp),
+              koResult: calcKoProbability(Array.from(combinedRolls), rawResult.defenderMaxHp),
+            }
+          }
+
           return {
             moveName,
             min: result.min,
