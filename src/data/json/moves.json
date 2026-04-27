@@ -8899,7 +8899,7 @@
     "category": "物理",
     "power": 80,
     "accuracy": 100,
-    "pp": 15,
+    "pp": 16,
     "priority": 0,
     "flags": {
       "contact": true,

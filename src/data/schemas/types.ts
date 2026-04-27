@@ -30,7 +30,7 @@ export interface MoveRecord {
   category: '物理' | '特殊' | '変化'
   power: number | null
   accuracy: number | null
-  pp: 8 | 12 | 15 | 16 | 20
+  pp: 8 | 12 | 16 | 20
   priority: number
   flags: {
     contact: boolean
