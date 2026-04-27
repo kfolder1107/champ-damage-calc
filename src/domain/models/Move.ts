@@ -47,7 +47,7 @@ export interface MoveData {
   category: MoveCategory
   power: number | null
   accuracy: number | null
-  pp: 8 | 12 | 16 | 20
+  pp: 8 | 12 | 15 | 16 | 20
   priority: number
   flags: MoveFlags
   special: SpecialMoveTag | null
