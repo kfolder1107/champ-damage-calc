@@ -4,7 +4,6 @@ interface SpSliderProps {
   label: string
   value: number
   statValue: number
-  remaining: number
   onChange: (v: number) => void
   rank?: number
   onChangeRank?: (rank: number) => void
@@ -24,8 +23,8 @@ function natureColor(nature: number): string {
   return 'text-slate-700 dark:text-slate-300'
 }
 
-export function SpSlider({ label, value, statValue, remaining, onChange, rank, onChangeRank, nature, onChangeNature }: SpSliderProps) {
-  const max = Math.min(SP_MAX_STAT, value + remaining)
+export function SpSlider({ label, value, statValue, onChange, rank, onChangeRank, nature, onChangeNature }: SpSliderProps) {
+  const max = SP_MAX_STAT
   const hasRank = onChangeRank !== undefined && rank !== undefined
   const hasNature = onChangeNature !== undefined && nature !== undefined
   const hasModifiers = hasRank || hasNature

@@ -152,8 +152,6 @@ function createPokemonStore() {
       const current = get().sp
       const clamped = Math.max(0, Math.min(32, value))
       const newSp = withStat(current, stat, clamped)
-      const total = getTotalSp(newSp)
-      if (total > SP_MAX_TOTAL) return
       set({ sp: newSp })
     },
 

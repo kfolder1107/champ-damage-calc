@@ -66,7 +66,6 @@ export function SpDistributionPanel({ sp, stats, onChangeSp, onSetPreset, ranks,
             label={STAT_LABEL[stat]}
             value={sp[stat]}
             statValue={stats[stat]}
-            remaining={remaining}
             onChange={v => onChangeSp(stat, v)}
             rank={NATURE_RANK_STATS.has(stat) && ranks ? (ranks[stat] ?? 0) : undefined}
             onChangeRank={NATURE_RANK_STATS.has(stat) && onChangeRank
