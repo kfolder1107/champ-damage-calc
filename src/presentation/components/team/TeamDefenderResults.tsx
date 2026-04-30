@@ -100,6 +100,7 @@ function MemberResultCard({
   const [defRanks, setDefRanks] = useState({ def: 0, spd: 0 })
   const [sp, setSp] = useState<SpDistribution>(() => ({ ...member.sp }))
   const [showSp, setShowSp] = useState(false)
+  const [abilityActivated, setAbilityActivated] = useState(false)
 
   const record = PokemonRepository.findById(member.pokemonId)
   const megas = record ? PokemonRepository.getMegasByBaseId(member.pokemonId) : []
@@ -185,6 +186,7 @@ function MemberResultCard({
               ranks: { def: defRanks.def, spd: defRanks.spd },
               status: null,
               weight: defWeight,
+              abilityActivated,
             },
             move,
             field: battleField,
@@ -234,7 +236,7 @@ function MemberResultCard({
     field.weather, field.terrain,
     field.isReflect, field.isLightScreen, field.isAuroraVeil,
     defRanks.def, defRanks.spd,
-    sp,
+    sp, abilityActivated,
   ])
 
   return (
@@ -276,6 +278,24 @@ function MemberResultCard({
           </button>
         )}
       </div>
+
+      {/* 特性条件トグル（マルチスケイル / ファントムガード） */}
+      {(member.abilityName === 'マルチスケイル' || member.abilityName === 'ファントムガード') && !member.isMega && (
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-slate-500 dark:text-slate-400">特性条件：</span>
+          <button
+            type="button"
+            onClick={() => setAbilityActivated(v => !v)}
+            className={`text-xs px-2 py-0.5 rounded border transition-colors ${
+              abilityActivated
+                ? 'text-indigo-600 border-indigo-500 bg-indigo-50 dark:text-indigo-400 dark:border-indigo-600 dark:bg-indigo-950'
+                : 'text-slate-500 border-slate-300 dark:border-slate-600 hover:border-slate-500 dark:hover:border-slate-500'
+            }`}
+          >
+            {abilityActivated ? '✓ HP満タン' : 'HP満タン'}
+          </button>
+        </div>
+      )}
 
       {/* SP調整 */}
       <div className="border-t border-slate-100 dark:border-slate-800 pt-2">
