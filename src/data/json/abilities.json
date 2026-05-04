@@ -1493,5 +1493,20 @@
     "name": "きみょうなくすり",
     "nameEn": "Curious Medicine",
     "calcTag": "none"
+  },
+  {
+    "name": "とびだすなかみ",
+    "nameEn": "Surprise Content",
+    "calcTag": "none"
+  },
+  {
+    "name": "すじがねいり",
+    "nameEn": "True Steel",
+    "calcTag": "none"
+  },
+  {
+    "name": "ぎゃくじょう",
+    "nameEn": "Berserk",
+    "calcTag": "none"
   }
 ]

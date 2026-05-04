@@ -1034,6 +1034,7 @@
       "ようりょくそ",
       "くいしんぼう"
     ],
+    "megaEvolutionKey": "mega-victreebel",
     "weight": 15.5
   },
   {
@@ -3924,6 +3925,7 @@
       "がんじょう",
       "くだけるよろい"
     ],
+    "megaEvolutionKey": "mega-skarmory",
     "weight": 50.5
   },
   {
@@ -6042,6 +6044,7 @@
     "abilities": [
       "ふゆう"
     ],
+    "megaEvolutionKey": "mega-chimecho",
     "weight": 1
   },
   {
@@ -11677,6 +11680,7 @@
       "かるわざ",
       "かたやぶり"
     ],
+    "megaEvolutionKey": "mega-hawlucha",
     "weight": 21.5
   },
   {
@@ -12534,6 +12538,7 @@
       "てつのこぶし",
       "いかりのツボ"
     ],
+    "megaEvolutionKey": "mega-crabominable",
     "weight": 180
   },
   {
@@ -13233,6 +13238,7 @@
     "abilities": [
       "はがねつかい"
     ],
+    "megaEvolutionKey": "mega-drampa",
     "weight": 210
   },
   {
@@ -16481,6 +16487,7 @@
       "Toxic Debris",
       "ふしょく"
     ],
+    "megaEvolutionKey": "mega-glimmora",
     "weight": 45
   },
   {
