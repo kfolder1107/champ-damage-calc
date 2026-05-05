@@ -5911,7 +5911,7 @@
       "pulse": false,
       "punch": false,
       "bite": false,
-      "slice": false
+      "slice": true
     },
     "special": null
   },
@@ -8929,7 +8929,7 @@
       "pulse": false,
       "punch": false,
       "bite": false,
-      "slice": false
+      "slice": true
     },
     "special": null,
     "multiHit": null
@@ -9259,7 +9259,7 @@
       "pulse": false,
       "punch": false,
       "bite": false,
-      "slice": false
+      "slice": true
     },
     "special": null,
     "multiHit": null
@@ -11988,6 +11988,153 @@
       "bite": false,
       "slice": false,
       "recoil": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "がんせきアックス",
+    "nameEn": "Rock Axe",
+    "type": "いわ",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "きょじゅうざん",
+    "nameEn": "Behemoth Blade",
+    "type": "はがね",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 12,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "サイコブレイド",
+    "nameEn": "Psycho Blade",
+    "type": "エスパー",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "priority": 0,
+    "flags": {
+      "contact": false,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "しんぴのつるぎ",
+    "nameEn": "Misty Blade",
+    "type": "フェアリー",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 16,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "ドゲザン",
+    "nameEn": "Kowtow Cleave",
+    "type": "あく",
+    "category": "物理",
+    "power": 85,
+    "accuracy": null,
+    "pp": 16,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "パワフルエッジ",
+    "nameEn": "Powerful Edge",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
+    },
+    "special": null,
+    "multiHit": null
+  },
+  {
+    "name": "ひけん・ちえなみ",
+    "nameEn": "Secret Sword Wave",
+    "type": "あく",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 16,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": true
     },
     "special": null,
     "multiHit": null

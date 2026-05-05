@@ -103,6 +103,10 @@ function resolveAtk(input: DamageCalcInput): number {
   if (attackerAbility === 'はりきり') {
     if (move.category === '物理') atkMod *= 1.5
   }
+  // きれあじ: スライス技1.5倍
+  if (attackerAbility === 'きれあじ' && move.flags.slice) {
+    atkMod *= 1.5
+  }
   // HP1/3以下で発動するピンチ特性（手動トグル）
   if (input.attackerAbilityActivated) {
     if (attackerAbility === 'げきりゅう' && move.type === 'みず') atkMod *= 1.5

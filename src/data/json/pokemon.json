@@ -17949,5 +17949,27 @@
       "ふゆう"
     ],
     "weight": 0.3
+  },
+  {
+    "id": 10229,
+    "name": "ヒスイダイケンキ",
+    "nameEn": "Samurott-Hisui",
+    "types": [
+      "みず",
+      "あく"
+    ],
+    "baseStats": {
+      "hp": 90,
+      "atk": 108,
+      "def": 80,
+      "spa": 100,
+      "spd": 65,
+      "spe": 85
+    },
+    "abilities": [
+      "げきりゅう",
+      "きれあじ"
+    ],
+    "weight": 58.2
   }
 ]
