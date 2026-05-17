@@ -17971,5 +17971,26 @@
       "きれあじ"
     ],
     "weight": 58.2
+  },
+  {
+    "id": 60001,
+    "name": "ヒスイゾロアーク",
+    "nameEn": "Hisuian Zoroark",
+    "types": [
+      "ノーマル",
+      "ゴースト"
+    ],
+    "baseStats": {
+      "hp": 55,
+      "atk": 100,
+      "def": 60,
+      "spa": 125,
+      "spd": 60,
+      "spe": 110
+    },
+    "abilities": [
+      "イリュージョン"
+    ],
+    "weight": 73.0
   }
 ]
