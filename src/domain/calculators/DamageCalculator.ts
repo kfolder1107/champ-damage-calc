@@ -428,6 +428,10 @@ function applyOtherModifiers(
   if (attackerAbility === 'てつのこぶし' && move.flags.punch) {
     d = pokeRound(d * 1.2)
   }
+  // メガランチャー: はどう技の威力1.5倍
+  if (attackerAbility === 'メガランチャー' && move.flags.pulse) {
+    d = pokeRound(d * 1.5)
+  }
   // すなのちから: すなあらし時にいわ/はがね/じめん技1.3倍
   if (attackerAbility === 'すなのちから' && input.field.weather === 'すなあらし') {
     if (moveType === 'いわ' || moveType === 'はがね' || moveType === 'じめん') {
