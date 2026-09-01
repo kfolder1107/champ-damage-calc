@@ -25,6 +25,8 @@ function swapStores() {
     itemName: s.itemName,
     isMega: s.isMega,
     canMega: s.canMega,
+    availableMegas: s.availableMegas,
+    megaKey: s.megaKey,
     ranks: s.ranks,
     status: s.status,
     moves: s.moves,
