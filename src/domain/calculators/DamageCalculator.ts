@@ -156,6 +156,11 @@ function resolveDef(input: DamageCalcInput): number {
   if (defenderAbility === 'ふわふわもうふ' || defenderAbility === 'もふもふ') {
     if (move.flags.contact) defMod *= 0.5
   }
+  // はどうのぼうご: 接触技(直接攻撃)のダメージ半減（もふもふのほのお弱点は無し）
+  // ダメージは atk/def に比例するため、半減には実効防御を2倍にする
+  if (defenderAbility === 'はどうのぼうご') {
+    if (move.flags.contact) defMod *= 2
+  }
   // ふしぎなうろこ: 状態異常時に特防1.5倍（statusフィールドから自動判定）
   if (defenderAbility === 'ふしぎなうろこ' && input.defenderStatus !== null) {
     if (move.category === '特殊') defMod *= 1.5

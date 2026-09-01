@@ -51,8 +51,10 @@ export function MegaToggle({ isMega, canMega, availableMegas, megaKey, onChange,
         通常
       </button>
       {availableMegas.map(mega => {
-        // "mega-charizard-x" → "X", "mega-mewtwo-y" → "Y" のように末尾の -x/-y を取得
-        const suffix = mega.key.split('-').pop()?.toUpperCase() ?? mega.name
+        // "mega-charizard-x" → "X", "mega-lucario-z" → "Z" のように末尾の1文字形態記号のみ接尾辞化。
+        // "mega-lucario"(基本メガ)のような多文字末尾は接尾辞なし → 単に "メガ" 表示
+        const seg = mega.key.split('-').pop() ?? ''
+        const suffix = /^[a-z]$/i.test(seg) ? seg.toUpperCase() : ''
         const isActive = isMega && megaKey === mega.key
         return (
           <button

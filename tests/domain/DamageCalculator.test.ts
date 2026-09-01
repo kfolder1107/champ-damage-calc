@@ -262,4 +262,27 @@ describe('DamageCalculator', () => {
       expect(result.percentMax).toBeCloseTo(expected, 1)
     })
   })
+
+  // ── メガルカリオZ 新特性: はどうのぼうご ──────────────────────────────
+  describe('はどうのぼうご', () => {
+    // タイプ相性の影響を排除するため防御側タイプは無効・半減の無いノーマルで固定
+    const neutralDefender = { defenderTypes: ['ノーマル'] as MoveData['type'][] }
+
+    it('接触技のダメージが半減する', () => {
+      const move = makePhysicalMove('あなをほる', 'じめん', 80) // contact: true
+      const normal = calculateDamage({ ...baseInput, ...neutralDefender, move, defenderAbility: 'シャドータッグ' })
+      const guarded = calculateDamage({ ...baseInput, ...neutralDefender, move, defenderAbility: 'はどうのぼうご' })
+      // 防御実数値が2倍相当になるためダメージはおよそ半分（floor丸めを許容）
+      expect(guarded.max).toBeLessThan(normal.max)
+      expect(guarded.max).toBeGreaterThanOrEqual(Math.floor(normal.max / 2) - 2)
+      expect(guarded.max).toBeLessThanOrEqual(Math.ceil(normal.max / 2) + 2)
+    })
+
+    it('非接触技には影響しない', () => {
+      const move = makeSpecialMove('だいちのちから', 'じめん', 90) // contact: false
+      const normal = calculateDamage({ ...baseInput, ...neutralDefender, move, defenderAbility: 'シャドータッグ' })
+      const guarded = calculateDamage({ ...baseInput, ...neutralDefender, move, defenderAbility: 'はどうのぼうご' })
+      expect(guarded.max).toBe(normal.max)
+    })
+  })
 })

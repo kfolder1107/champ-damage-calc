@@ -1508,5 +1508,10 @@
     "name": "ぎゃくじょう",
     "nameEn": "Berserk",
     "calcTag": "none"
+  },
+  {
+    "name": "はどうのぼうご",
+    "nameEn": "Aura Guard",
+    "calcTag": "aura-guard"
   }
 ]

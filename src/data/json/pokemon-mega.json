@@ -672,6 +672,25 @@
     "weight": 49.0
   },
   {
+    "key": "mega-absol-z",
+    "basePokemonId": 359,
+    "name": "メガアブソルZ",
+    "nameEn": "Mega Absol Z",
+    "types": [
+      "あく"
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 154,
+      "def": 60,
+      "spa": 75,
+      "spd": 60,
+      "spe": 151
+    },
+    "ability": "きれあじ",
+    "weight": 49.0
+  },
+  {
     "key": "mega-glalie",
     "basePokemonId": 362,
     "name": "メガオニゴーリ",
@@ -709,6 +728,26 @@
     },
     "ability": "てきおうりょく",
     "weight": 57.5
+  },
+  {
+    "key": "mega-lucario-z",
+    "basePokemonId": 448,
+    "name": "メガルカリオZ",
+    "nameEn": "Mega Lucario Z",
+    "types": [
+      "かくとう",
+      "はがね"
+    ],
+    "baseStats": {
+      "hp": 70,
+      "atk": 100,
+      "def": 70,
+      "spa": 164,
+      "spd": 70,
+      "spe": 151
+    },
+    "ability": "はどうのぼうご",
+    "weight": 49.4
   },
   {
     "key": "mega-gallade",
@@ -769,6 +808,26 @@
     },
     "ability": "すなのちから",
     "weight": 130.0
+  },
+  {
+    "key": "mega-garchomp-z",
+    "basePokemonId": 445,
+    "name": "メガガブリアスZ",
+    "nameEn": "Mega Garchomp Z",
+    "types": [
+      "ドラゴン",
+      "じめん"
+    ],
+    "baseStats": {
+      "hp": 108,
+      "atk": 130,
+      "def": 85,
+      "spa": 141,
+      "spd": 85,
+      "spe": 151
+    },
+    "ability": "ふゆう",
+    "weight": 99.0
   },
   {
     "key": "mega-abomasnow",
