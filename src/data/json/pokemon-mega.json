@@ -1351,8 +1351,8 @@
     "name": "メガグソクムシャ",
     "nameEn": "Mega Golisopod",
     "types": [
-      "むし",
-      "はがね"
+      "はがね",
+      "むし"
     ],
     "baseStats": {
       "hp": 75,
@@ -1362,8 +1362,8 @@
       "spd": 120,
       "spe": 40
     },
-    "ability": "ききかいひ",
-    "weight": 108.0
+    "ability": "かたいツメ",
+    "weight": 148.0
   },
   {
     "key": "mega-beedrill",
@@ -1592,5 +1592,15 @@
     "baseStats": { "hp": 78, "atk": 85, "def": 110, "spa": 160, "spd": 116, "spe": 36 },
     "ability": "ぎゃくじょう",
     "weight": 240.5
+  },
+  {
+    "key": "mega-baxcalibur",
+    "basePokemonId": 998,
+    "name": "メガセグレイブ",
+    "nameEn": "Mega Baxcalibur",
+    "types": ["こおり", "ドラゴン"],
+    "baseStats": { "hp": 115, "atk": 175, "def": 117, "spa": 105, "spd": 101, "spe": 87 },
+    "ability": "ねつこうかん",
+    "weight": 315.0
   }
 ]
