@@ -4000,7 +4000,7 @@
     "nameEn": "Payback",
     "type": "あく",
     "category": "物理",
-    "power": 50,
+    "power": 100,
     "accuracy": 100,
     "pp": 12,
     "priority": 0,
@@ -4014,7 +4014,11 @@
       "slice": false
     },
     "special": null,
-    "multiHit": null
+    "multiHit": null,
+    "powerOptions": [
+      100,
+      50
+    ]
   },
   {
     "name": "しっぽきり",
