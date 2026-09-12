@@ -6298,6 +6298,26 @@
     "special": null
   },
   {
+    "name": "でんこうそうげき",
+    "nameEn": "Denkou Sougeki",
+    "type": "でんき",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "priority": 0,
+    "flags": {
+      "contact": true,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": true,
+      "bite": false,
+      "slice": false
+    },
+    "special": null
+  },
+  {
     "name": "てんしのキッス",
     "nameEn": "Sweet Kiss",
     "type": "フェアリー",
