@@ -3087,6 +3087,26 @@
     "special": null
   },
   {
+    "name": "ゴールドラッシュ",
+    "nameEn": "Gold Rush",
+    "type": "はがね",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 95,
+    "pp": 8,
+    "priority": 0,
+    "flags": {
+      "contact": false,
+      "sound": false,
+      "bullet": false,
+      "pulse": false,
+      "punch": false,
+      "bite": false,
+      "slice": false
+    },
+    "special": null
+  },
+  {
     "name": "コーチング",
     "nameEn": "Coaching",
     "type": "かくとう",
