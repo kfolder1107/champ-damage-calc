@@ -28,6 +28,8 @@ export type SpecialMoveTag =
   | 'stored-power'  // アシストパワー: ランク上昇分で威力増加
   | 'reversal'      // きしかいせい: HPが少ないほど威力増加
   | 'heavy-slam'    // ヘビーボンバー: 攻撃側/防御側の体重比で威力変化
+  | 'expanding-force' // ワイドフォース: サイコフィールド時に威力1.5倍（+フィールド1.3倍も加算）
+  | 'terrain-pulse' // だいちのはどう: フィールド時にタイプ変化＆威力2倍（+フィールド1.3倍も加算）
 
 export interface MoveFlags {
   contact: boolean

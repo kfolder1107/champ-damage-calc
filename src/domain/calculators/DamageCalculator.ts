@@ -59,6 +59,16 @@ function resolvePower(input: DamageCalcInput): number {
     return 100
   }
 
+  // ワイドフォース: サイコフィールド時に威力1.5倍（接地前提。フィールド1.3倍は別途加算）
+  if (move.special === 'expanding-force' && input.field.terrain === 'サイコ') {
+    return Math.floor((move.power ?? 0) * 1.5)
+  }
+
+  // だいちのはどう: いずれかのフィールド時に威力2倍（接地前提。フィールド1.3倍は別途加算）
+  if (move.special === 'terrain-pulse' && input.field.terrain !== null) {
+    return (move.power ?? 0) * 2
+  }
+
   return move.power ?? 0
 }
 
@@ -195,6 +205,17 @@ function resolveMoveType(input: DamageCalcInput): TypeName {
       case 'あめ': return 'みず'
       case 'すなあらし': return 'いわ'
       case 'ゆき': return 'こおり'
+      default: return 'ノーマル'
+    }
+  }
+
+  // だいちのはどう: フィールドによってタイプ変化（接地前提）
+  if (move.special === 'terrain-pulse') {
+    switch (input.field.terrain) {
+      case 'グラス': return 'くさ'
+      case 'ミスト': return 'フェアリー'
+      case 'エレキ': return 'でんき'
+      case 'サイコ': return 'エスパー'
       default: return 'ノーマル'
     }
   }

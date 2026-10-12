@@ -5223,7 +5223,7 @@
       "bite": false,
       "slice": false
     },
-    "special": null,
+    "special": "terrain-pulse",
     "multiHit": null
   },
   {
@@ -11726,7 +11726,7 @@
       "bite": false,
       "slice": false
     },
-    "special": null,
+    "special": "expanding-force",
     "multiHit": null
   },
   {
