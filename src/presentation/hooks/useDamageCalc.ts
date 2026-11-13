@@ -116,12 +116,12 @@ export function useDamageCalc() {
 
             const { totalResult: result, hitResults: perHitResults } = calcEscalating(alwaysCrit)
             const { totalResult: critResult, hitResults: critPerHitResults } = calcEscalating(true)
-            return { moveName, result, critResult, perHitResults, critPerHitResults }
+            return { slotIdx, moveName, result, critResult, perHitResults, critPerHitResults }
           }
 
           const result = executeDamageCalculation({ ...calcInput, isCritical: alwaysCrit })
           const critResult = executeDamageCalculation({ ...calcInput, isCritical: true })
-          return { moveName, result, critResult }
+          return { slotIdx, moveName, result, critResult }
         } catch {
           return null
         }

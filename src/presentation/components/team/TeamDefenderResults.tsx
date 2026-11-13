@@ -37,6 +37,8 @@ function koColor(koResult: KoResult): string {
 }
 
 interface MoveCalcResult {
+  /** 技スロット番号（0〜3）。同名技でも一意になる描画キー兼用 */
+  slotIdx: number
   moveName: string
   min: number
   max: number
@@ -212,6 +214,7 @@ function MemberResultCard({
           }
 
           return {
+            slotIdx,
             moveName,
             min: result.min,
             max: result.max,
@@ -362,7 +365,7 @@ function MemberResultCard({
       ) : (
         <div className="space-y-1">
           {results.map(r => (
-            <div key={r.moveName} className="flex items-center gap-2 text-xs">
+            <div key={r.slotIdx} className="flex items-center gap-2 text-xs">
               <span className="text-slate-600 dark:text-slate-400 w-24 truncate flex-shrink-0">
                 {r.moveName}
               </span>
