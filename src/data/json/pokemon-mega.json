@@ -815,8 +815,7 @@
     "name": "メガガブリアスZ",
     "nameEn": "Mega Garchomp Z",
     "types": [
-      "ドラゴン",
-      "じめん"
+      "ドラゴン"
     ],
     "baseStats": {
       "hp": 108,
