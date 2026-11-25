@@ -5,6 +5,7 @@ import {
   createSpDistribution, withStat, getTotalSp, getRemainingsSp,
 } from '@/domain/models/StatPoints'
 import { SP_MAX_TOTAL } from '@/domain/constants/spLimits'
+import { applyEntryRankBoost } from '@/domain/models/EntryAbility'
 import type { BaseStats } from '@/domain/models/Pokemon'
 import type { MegaPokemonRecord } from '@/data/schemas/types'
 import { PokemonRepository } from '@/data/repositories/PokemonRepository'
@@ -135,7 +136,8 @@ function createPokemonStore() {
         effectiveAbility,
         weight,
         sp: createSpDistribution(),
-        ranks: { ...DEFAULT_RANKS },
+        // ランクはリセットした上で、登場時ランク上昇特性（とくじょう等）を反映
+        ranks: applyEntryRankBoost({ ...DEFAULT_RANKS }, 'なし', effectiveAbility),
         status: null,
         abilityActivated: false,
         proteanType: null,
@@ -162,18 +164,22 @@ function createPokemonStore() {
     },
 
     setAbility: (name) => {
-      const { isMega, pokemonId } = get()
+      const { isMega, pokemonId, ranks, effectiveAbility } = get()
       if (isMega && pokemonId) {
         const mega = PokemonRepository.getMegaByBaseId(pokemonId)
         if (mega) return
       }
-      set({ abilityName: name, effectiveAbility: name })
+      set({
+        abilityName: name,
+        effectiveAbility: name,
+        ranks: applyEntryRankBoost(ranks, effectiveAbility, name),
+      })
     },
 
     setItem: (name) => set({ itemName: name }),
 
     setMega: (enable) => {
-      const { pokemonId, canMega, abilityName, availableMegas } = get()
+      const { pokemonId, canMega, abilityName, availableMegas, ranks, effectiveAbility } = get()
       if (!canMega || !pokemonId) return
 
       if (enable) {
@@ -186,6 +192,7 @@ function createPokemonStore() {
           baseStats: mega.baseStats as BaseStats,
           types: mega.types as TypeName[],
           effectiveAbility: mega.ability,
+          ranks: applyEntryRankBoost(ranks, effectiveAbility, mega.ability),
           weight: mega.weight !== undefined ? mega.weight : (base?.weight ?? 0),
         })
       } else {
@@ -197,13 +204,14 @@ function createPokemonStore() {
           baseStats: base.baseStats as BaseStats,
           types: base.types as TypeName[],
           effectiveAbility: abilityName,
+          ranks: applyEntryRankBoost(ranks, effectiveAbility, abilityName),
           weight: base.weight,
         })
       }
     },
 
     setMegaForm: (key) => {
-      const { pokemonId, isMega, availableMegas } = get()
+      const { pokemonId, isMega, availableMegas, ranks, effectiveAbility } = get()
       if (!pokemonId || !isMega) return
       const mega = availableMegas.find(m => m.key === key)
       if (!mega) return
@@ -213,6 +221,7 @@ function createPokemonStore() {
         baseStats: mega.baseStats as BaseStats,
         types: mega.types as TypeName[],
         effectiveAbility: mega.ability,
+        ranks: applyEntryRankBoost(ranks, effectiveAbility, mega.ability),
         weight: mega.weight !== undefined ? mega.weight : (base?.weight ?? 0),
       })
     },

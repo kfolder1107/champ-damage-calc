@@ -1513,5 +1513,10 @@
     "name": "はどうのぼうご",
     "nameEn": "Aura Guard",
     "calcTag": "aura-guard"
+  },
+  {
+    "name": "とくじょう",
+    "nameEn": "Tokujou",
+    "calcTag": "entry-spa-boost"
   }
 ]
